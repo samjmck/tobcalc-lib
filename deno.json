@@ -3,6 +3,10 @@
   "version": "1.0.1",
   "exports": "./src/export.ts",
   "publish": {
+    "include": [
+      "src",
+      "pdfs"
+    ],
     "exclude": [
       ".gitignore",
       "LICENSE",

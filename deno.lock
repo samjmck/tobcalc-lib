@@ -1,0 +1,149 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@std/assert@^0.220.1": "jsr:@std/assert@0.220.1",
+      "jsr:@std/cli@0.220.1": "jsr:@std/cli@0.220.1",
+      "npm:fontkit@2.0.2": "npm:fontkit@2.0.2",
+      "npm:pdf-lib@1.17.1": "npm:pdf-lib@1.17.1"
+    },
+    "jsr": {
+      "@std/assert@0.220.1": {
+        "integrity": "88710d54f3afdd7a5761e7805abba1f56cd14e4b212feffeb3e73a9f77482425"
+      },
+      "@std/cli@0.220.1": {
+        "integrity": "6c38388efc899c9d98811d38a46effe01e0d91138068483f1e6ae834caad5e82",
+        "dependencies": [
+          "jsr:@std/assert@^0.220.1"
+        ]
+      }
+    },
+    "npm": {
+      "@pdf-lib/standard-fonts@1.0.0": {
+        "integrity": "sha512-hU30BK9IUN/su0Mn9VdlVKsWBS6GyhVfqjwl1FjZN4TxP6cCw0jP2w7V3Hf5uX7M0AZJ16vey9yE0ny7Sa59ZA==",
+        "dependencies": {
+          "pako": "pako@1.0.11"
+        }
+      },
+      "@pdf-lib/upng@1.0.1": {
+        "integrity": "sha512-dQK2FUMQtowVP00mtIksrlZhdFXQZPC+taih1q4CvPZ5vqdxR/LKBaFg0oAfzd1GlHZXXSPdQfzQnt+ViGvEIQ==",
+        "dependencies": {
+          "pako": "pako@1.0.11"
+        }
+      },
+      "@swc/helpers@0.4.14": {
+        "integrity": "sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==",
+        "dependencies": {
+          "tslib": "tslib@2.6.2"
+        }
+      },
+      "@swc/helpers@0.4.36": {
+        "integrity": "sha512-5lxnyLEYFskErRPenYItLRSge5DjrJngYKdVjRSrWfza9G6KkgHEXi0vUZiyUeMU5JfXH1YnvXZzSp8ul88o2Q==",
+        "dependencies": {
+          "legacy-swc-helpers": "@swc/helpers@0.4.14",
+          "tslib": "tslib@2.6.2"
+        }
+      },
+      "base64-js@1.5.1": {
+        "integrity": "sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==",
+        "dependencies": {}
+      },
+      "brotli@1.3.3": {
+        "integrity": "sha512-oTKjJdShmDuGW94SyyaoQvAjf30dZaHnjJ8uAF+u2/vGJkJbJPJAT1gDiOJP5v1Zb6f9KEyW/1HpuaWIXtGHPg==",
+        "dependencies": {
+          "base64-js": "base64-js@1.5.1"
+        }
+      },
+      "clone@2.1.2": {
+        "integrity": "sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==",
+        "dependencies": {}
+      },
+      "dfa@1.2.0": {
+        "integrity": "sha512-ED3jP8saaweFTjeGX8HQPjeC1YYyZs98jGNZx6IiBvxW7JG5v492kamAQB3m2wop07CvU/RQmzcKr6bgcC5D/Q==",
+        "dependencies": {}
+      },
+      "fast-deep-equal@3.1.3": {
+        "integrity": "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==",
+        "dependencies": {}
+      },
+      "fontkit@2.0.2": {
+        "integrity": "sha512-jc4k5Yr8iov8QfS6u8w2CnHWVmbOGtdBtOXMze5Y+QD966Rx6PEVWXSEGwXlsDlKtu1G12cJjcsybnqhSk/+LA==",
+        "dependencies": {
+          "@swc/helpers": "@swc/helpers@0.4.36",
+          "brotli": "brotli@1.3.3",
+          "clone": "clone@2.1.2",
+          "dfa": "dfa@1.2.0",
+          "fast-deep-equal": "fast-deep-equal@3.1.3",
+          "restructure": "restructure@3.0.1",
+          "tiny-inflate": "tiny-inflate@1.0.3",
+          "unicode-properties": "unicode-properties@1.4.1",
+          "unicode-trie": "unicode-trie@2.0.0"
+        }
+      },
+      "pako@0.2.9": {
+        "integrity": "sha512-NUcwaKxUxWrZLpDG+z/xZaCgQITkA/Dv4V/T6bw7VON6l1Xz/VnrBqrYjZQ12TamKHzITTfOEIYUj48y2KXImA==",
+        "dependencies": {}
+      },
+      "pako@1.0.11": {
+        "integrity": "sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==",
+        "dependencies": {}
+      },
+      "pdf-lib@1.17.1": {
+        "integrity": "sha512-V/mpyJAoTsN4cnP31vc0wfNA1+p20evqqnap0KLoRUN0Yk/p3wN52DOEsL4oBFcLdb76hlpKPtzJIgo67j/XLw==",
+        "dependencies": {
+          "@pdf-lib/standard-fonts": "@pdf-lib/standard-fonts@1.0.0",
+          "@pdf-lib/upng": "@pdf-lib/upng@1.0.1",
+          "pako": "pako@1.0.11",
+          "tslib": "tslib@1.14.1"
+        }
+      },
+      "restructure@3.0.1": {
+        "integrity": "sha512-6neDpI/yE9eogQo22qmWwKIA9wFPRyYjQleDEh6zaNAf2ZPqLJYUvNBJBWEWNoBlCeQMQkvIOe2YI/K2GOag+g==",
+        "dependencies": {}
+      },
+      "tiny-inflate@1.0.3": {
+        "integrity": "sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==",
+        "dependencies": {}
+      },
+      "tslib@1.14.1": {
+        "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==",
+        "dependencies": {}
+      },
+      "tslib@2.6.2": {
+        "integrity": "sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==",
+        "dependencies": {}
+      },
+      "unicode-properties@1.4.1": {
+        "integrity": "sha512-CLjCCLQ6UuMxWnbIylkisbRj31qxHPAurvena/0iwSVbQ2G1VY5/HjV0IRabOEbDHlzZlRdCrD4NhB0JtU40Pg==",
+        "dependencies": {
+          "base64-js": "base64-js@1.5.1",
+          "unicode-trie": "unicode-trie@2.0.0"
+        }
+      },
+      "unicode-trie@2.0.0": {
+        "integrity": "sha512-x7bc76x0bm4prf1VLg79uhAzKw8DVboClSN5VxJuQ+LKDOVEW9CdH+VY7SP+vX7xCYQqzzgQpFqz15zeLvAtZQ==",
+        "dependencies": {
+          "pako": "pako@0.2.9",
+          "tiny-inflate": "tiny-inflate@1.0.3"
+        }
+      }
+    }
+  },
+  "remote": {
+    "https://cdn.skypack.dev/-/@pdf-lib/standard-fonts@v1.0.0-Z8Dxw2SAoP39vRoTIKF1/dist=es2019,mode=imports/optimized/@pdf-lib/standard-fonts.js": "7e7233fe50eff7cdacd5dfe148b2e8793ef2c0aacd1b09d09d74fa71ea588eac",
+    "https://cdn.skypack.dev/-/@pdf-lib/upng@v1.0.1-cDyYONcMEAs6JipZyc8F/dist=es2019,mode=imports/optimized/@pdf-lib/upng.js": "c1fa7f102bc8ece5a18e22f27a18929143c4bba9735b24ea23b0b0d8eaa8cd53",
+    "https://cdn.skypack.dev/-/pako@v1.0.11-HN3j6r6YXxSYMQQ5YY76/dist=es2019,mode=imports/optimized/pako.js": "cb928ba393bdb8c8b9b6509a68975a00e43780ed2424bf0c6e020890dc546e4b",
+    "https://cdn.skypack.dev/-/pdf-lib@v1.17.1-P8YmSI9gov9vMnrV7v2f/dist=es2019,mode=imports/optimized/pdf-lib.js": "ce55a997148b41a520719255d57af560fd269685241031d2502f0c7583d690b2",
+    "https://cdn.skypack.dev/-/tslib@v1.14.1-mWTe8wftGbG1xYC8gPyw/dist=es2019,mode=imports/optimized/tslib.js": "bde9e42ab1dee8764c8fef53a8165ab516af507bd5a6e120aae6d0922925ba74",
+    "https://cdn.skypack.dev/pdf-lib@1.17.1?dts": "11ccb0b2660b159faec9facfc77e47ad78e1d1ee41805f007b4dd11b62095e05"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/assert@0.220.1",
+      "jsr:@std/cli@0.220.1",
+      "jsr:@std/flags@0.220.1",
+      "npm:fontkit@2.0.2",
+      "npm:pdf-lib@1.17.1"
+    ]
+  }
+}

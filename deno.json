@@ -1,0 +1,22 @@
+{
+  "name": "@samjmck/tobcalc-lib",
+  "version": "1.0.0",
+  "exports": "./src/export.ts",
+  "publish": {
+    "exclude": [
+      ".gitignore",
+      "LICENSE",
+      "README.md",
+      "src/**/*_test.ts",
+      "!pdfs/build/*",
+      "!src/registered_funds.ts"
+    ]
+  },
+  "imports": {
+    "@std/cli": "jsr:@std/cli@0.220.1",
+    "@std/assert": "jsr:@std/assert@0.220.1",
+    "@std/flags": "jsr:@std/flags@0.220.1",
+    "pdf-lib": "npm:pdf-lib@1.17.1",
+    "fontkit": "npm:fontkit@2.0.2"
+  }
+}

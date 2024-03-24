@@ -1,0 +1,14 @@
+{
+	"name": "tobcalc-lib",
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"features": {
+		"ghcr.io/devcontainers-community/features/deno:1": {}
+	},
+	"postCreateCommand": [
+		"deno run --allow-write --allow-net scripts/fetch_registered_funds.ts",
+		"cd pdfs && ./generate.sh"
+	],
+	"extensions": [
+		"denoland.vscode-deno"
+	]
+}

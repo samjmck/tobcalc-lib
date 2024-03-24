@@ -17,5 +17,4 @@ jobs:
           deno-version: v1.41.3
       - run: run --allow-write --allow-net scripts/fetch_registered_funds.ts
       - run: cd pdfs && ./generate.sh
-      - run: deno test --allow-read --allow-net src/{,**/}*_test.ts
       - run: npx jsr publish

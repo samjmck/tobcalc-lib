@@ -27,4 +27,4 @@ jobs:
           deno-version: v1.41.3
       - run: deno run --allow-write --allow-net scripts/fetch_registered_funds.ts
       - run: cd pdfs && ./generate.sh
-      - run: deno publish
+      - run: deno publish --allow-dirty

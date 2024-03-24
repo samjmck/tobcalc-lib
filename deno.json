@@ -7,8 +7,11 @@
       ".gitignore",
       "LICENSE",
       "README.md",
+      ".github",
+      "pdfs",
       "src/**/*_test.ts",
-      "!pdfs/build/*",
+      "pdfs/",
+      "!pdfs/build",
       "!src/registered_funds.ts"
     ]
   },

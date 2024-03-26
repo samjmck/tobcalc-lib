@@ -4,10 +4,12 @@
   "exports": "./src/export.ts",
   "publish": {
     "include": [
+      "deno.json",
       "src",
       "pdfs"
     ],
     "exclude": [
+
       ".gitignore",
       "LICENSE",
       "README.md",

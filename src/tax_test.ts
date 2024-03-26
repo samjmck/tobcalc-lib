@@ -228,17 +228,18 @@ Deno.test({
             }
         ];
         const taxFormData = getTaxFormData(taxableTransactions, getDefaultTaxRate);
-        assertEquals(taxFormData.get(0.0012), <FormRow> {
+
+        assertEquals(taxFormData["012"], <FormRow> {
             quantity: 3,
             taxBase: 300_00,
             taxValue: 0.0012 * 300_00,
         });
-        assertEquals(taxFormData.get(0.0035), <FormRow> {
+        assertEquals(taxFormData["035"], <FormRow> {
             quantity: 3,
             taxBase: 300_00,
             taxValue: 0.0035 * 300_00,
         });
-        assertEquals(taxFormData.get(0.0132), <FormRow> {
+        assertEquals(taxFormData["132"], <FormRow> {
             quantity: 1,
             taxBase: 100_00,
             taxValue: 0.0132 * 100_00,

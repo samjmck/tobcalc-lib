@@ -131,27 +131,57 @@ export interface FormRow {
     taxValue: number;
 }
 
-export type TaxFormData = Map<number, FormRow>;
+export interface TaxFormData {
+    "012": FormRow;
+    "035": FormRow;
+    "132": FormRow;
+    "total": number;
+}
 
 export function getTaxFormData(taxableTransactions: TaxableTransaction[], getTaxRate: TaxRateFunction): TaxFormData {
-    const map: Map<number, FormRow> = new Map();
+    const taxFormData: TaxFormData = {
+        "012": {
+            quantity: 0,
+            taxBase: 0,
+            taxValue: 0,
+        },
+        "035": {
+            quantity: 0,
+            taxBase: 0,
+            taxValue: 0,
+        },
+        "132": {
+            quantity: 0,
+            taxBase: 0,
+            taxValue: 0,
+        },
+        "total": 0,
+    };
     for(const taxableTransaction of taxableTransactions) {
         const taxRate = getTaxRate(taxableTransaction);
-        let formRow = map.get(taxRate);
-        if(formRow === undefined) {
-            formRow = {
-                quantity: 0,
-                taxBase: 0,
-                taxValue: 0,
-            };
-            map.set(taxRate, formRow);
+        let formRow: FormRow;
+        if (taxRate === 0.0012) {
+            formRow = taxFormData["012"];
+        } else if (taxRate === 0.0035) {
+            formRow = taxFormData["035"];
+        } else if (taxRate === 0.0132) {
+            formRow = taxFormData["132"];
+        } else {
+            throw new InformativeError("tax_rate.not_found", taxRate);
         }
         formRow.quantity += 1;
         formRow.taxBase += taxableTransaction.value;
     }
+
+    const formRowTaxRates = <[number, FormRow][]> [
+        [0.0012, taxFormData["012"]],
+        [0.0035, taxFormData["035"]],
+        [0.0132, taxFormData["132"]],
+    ];
+
     // Calculate taxValue at the end so we only suffer from one floating point error and aren't constantly adding them together
-    for(const [taxRate, formRow] of map.entries()) {
-        formRow.taxValue = formRow.taxBase * taxRate;
+    for (const [taxRate, formRow] of formRowTaxRates) {
+        taxFormData["total"] += formRow.taxValue = formRow.taxBase * taxRate;
     }
-    return map;
+    return taxFormData;
 }

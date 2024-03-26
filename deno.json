@@ -6,13 +6,12 @@
     "include": [
       "deno.json",
       "src",
-      "pdfs"
+      "pdfs",
+      "README.md"
     ],
     "exclude": [
-
       ".gitignore",
       "LICENSE",
-      "README.md",
       ".github",
       "pdfs",
       "src/**/*_test.ts",

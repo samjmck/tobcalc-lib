@@ -1,13 +1,14 @@
 {
   "name": "@samjmck/tobcalc-lib",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "exports": "./src/export.ts",
   "publish": {
     "include": [
       "deno.json",
       "src",
       "pdfs",
-      "README.md"
+      "README.md",
+      "docs"
     ],
     "exclude": [
       ".gitignore",

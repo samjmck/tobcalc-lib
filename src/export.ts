@@ -36,6 +36,7 @@ import {
 } from "./enums.ts";
 import { formatMoney } from "./formatting.ts";
 import { fillPdf } from "./pdf.ts";
+import { workerMessageEventListener } from "./worker.ts";
 
 // Re-export functions that would be used in a webapp
 export {
@@ -59,6 +60,7 @@ export {
     getCurrencyExchangeRatesMap, getExchangeRatesMap,
     getTaxableTransactions, getTaxFormData, getDefaultTaxRate,
     fillPdf,
+    workerMessageEventListener,
 };
 
 export type {

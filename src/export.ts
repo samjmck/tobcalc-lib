@@ -15,7 +15,16 @@ import {
 } from "./data.ts";
 import { getTaxableTransactions, getTaxFormData, getDefaultTaxRate } from "./tax.ts";
 import { isNameRegistered } from "./tax.ts";
-import { CurrencyCode, SecurityType } from "./enums.ts";
+import {
+    TransactionType,
+    SecurityType,
+    ETF,
+    Stock,
+    Security,
+    CountryCode,
+    eeaCountries,
+    CurrencyCode,
+} from "./enums.ts";
 import { formatMoney } from "./formatting.ts";
 import { fillPdf } from "./pdf.ts";
 
@@ -27,7 +36,10 @@ export {
     BoursoramaAdapter,
     InformativeError,
     exchangeRatesMap,
+    TransactionType,
     SecurityType,
+    CountryCode,
+    eeaCountries,
     CurrencyCode,
     formatMoney,
     isNameRegistered,
@@ -38,4 +50,10 @@ export {
     getCurrencyExchangeRatesMap, getExchangeRatesMap,
     getTaxableTransactions, getTaxFormData, getDefaultTaxRate,
     fillPdf,
+};
+
+export type {
+    ETF,
+    Stock,
+    Security,
 };

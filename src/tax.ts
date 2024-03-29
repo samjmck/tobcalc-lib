@@ -92,7 +92,7 @@ export interface TaxableTransaction {
     countryCode: CountryCode;
 }
 
-type TaxRateFunction = (taxableTransaction: TaxableTransaction) => number;
+export type TaxRateFunction = (taxableTransaction: TaxableTransaction) => number;
 
 export const getDefaultTaxRate: TaxRateFunction = (taxableTransaction: TaxableTransaction) => {
     switch (taxableTransaction.security.type) {

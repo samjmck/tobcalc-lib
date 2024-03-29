@@ -2,6 +2,7 @@ import { IBKRAdapter } from "./adapters/IBKR_adapter.ts";
 import { DEGIROAdapter } from "./adapters/DEGIRO_adapter.ts";
 import { Trading212Adapter } from "./adapters/Trading212_adapter.ts";
 import { BoursoramaAdapter } from "./adapters/Boursorama_adapter.ts";
+import { BrokerAdapter, BrokerTransaction } from "./broker_adapter.ts";
 import { InformativeError } from "./InformativeError.ts";
 import {
     setECBUrlStart,
@@ -13,7 +14,15 @@ import {
     getExchangeRatesMap,
     getCurrencyExchangeRatesMap
 } from "./data.ts";
-import { getTaxableTransactions, getTaxFormData, getDefaultTaxRate } from "./tax.ts";
+import {
+    getTaxableTransactions,
+    getTaxFormData,
+    getDefaultTaxRate,
+    TaxFormData,
+    TaxRateFunction,
+    TaxableTransaction,
+    FormRow
+} from "./tax.ts";
 import { isNameRegistered } from "./tax.ts";
 import {
     TransactionType,
@@ -53,7 +62,13 @@ export {
 };
 
 export type {
+    BrokerAdapter,
+    BrokerTransaction,
     ETF,
     Stock,
     Security,
+    TaxFormData,
+    TaxRateFunction,
+    TaxableTransaction,
+    FormRow
 };

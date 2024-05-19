@@ -1,5 +1,5 @@
 import { assertEquals, assertRejects } from "@std/assert";
-import { CurrencyCode, ETF, SecurityType } from "./enums.ts";
+import { CurrencyCode, type ETF, SecurityType } from "./enums.ts";
 import { InformativeError } from "./InformativeError.ts";
 import { getCurrencyExchangeRatesMap, getSecurity } from "./data.ts";
 
@@ -25,6 +25,26 @@ Deno.test({
         }
     },
 });
+
+Deno.test({
+    name: "EURUSD exchange rates on days when the market was closed",
+    permissions: {
+        net: true,
+    },
+    fn: async () => {
+        const start = new Date("28 March 2024 00:00:00 GMT");
+        // 29, 30, 31 of March were holidays for ECB
+        const end = new Date("2 April 2024 00:00:00 GMT");
+
+        const rates = await getCurrencyExchangeRatesMap(start, end, CurrencyCode.USD);
+
+        console.log(rates);
+
+        assertEquals(rates.get("2024-03-29"), 1.0811);
+        assertEquals(rates.get("2024-03-30"), 1.0811);
+        assertEquals(rates.get("2024-03-31"), 1.0811);
+    },
+})
 
 // Test most popular ETFs within BEFIRE
 Deno.test({

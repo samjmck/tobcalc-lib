@@ -110,6 +110,32 @@ export async function getCurrencyExchangeRatesMap(start: Date, end: Date, curren
 
         currencyMap.set(date, exchangeRate);
     }
+
+    // Fill in missing dates with the exchange rate closest to the missing date
+    // First trying to find the previous date with an exchange rate
+    // If that is not possible, then the next date with an exchange rate
+    for (let currentDate = new Date(start); currentDate <= end; currentDate.setDate(currentDate.getDate() + 1)) {
+        const date = formatDate(currentDate);
+
+        if (!currencyMap.has(date)) {
+            let found = false;
+            for (let i = 1; i <= 5; i++) {
+                const previousDate = new Date(currentDate.getTime() - i * 86400000);
+                const previousDateStr = formatDate(previousDate);
+
+                if (currencyMap.has(previousDateStr)) {
+                    currencyMap.set(date, <number> currencyMap.get(previousDateStr));
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                console.warn(`Cannot go back more than 5 days for date ${date} and currency code ${currencyCode}`);
+            }
+        }
+    }
+
     return currencyMap;
 }
 

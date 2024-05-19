@@ -7,9 +7,12 @@ export const IBKRAdapter: BrokerAdapter = async data => {
     // Convert data blob to a string
     const text = await data.text();
 
+    // If rows are separated by "\r\n" we want to replace it with "\n"
+    const modifiedText = text.replace(/\r\n/g, "\n");
+
     // Rows are separated by a line break or "\n", we want to split the string up into the rows
     // separated by \n
-    const rows = text.split("\n");
+    const rows = modifiedText.split("\n");
 
     // Each column in a row is seperated by a comma - we can get the column names by splitting
     // the first row

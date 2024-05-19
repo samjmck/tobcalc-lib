@@ -57,3 +57,19 @@ Deno.test({
         assertEquals(brokerTransactions.length, 7);
     },
 });
+
+Deno.test({
+    name: "IBKR adapter works with file that uses \r\n line breaks",
+    permissions: {
+        read: true,
+    },
+    fn: async () => {
+        const data = await Deno.readFile("src/adapters/IBKR_adapter_test.csv");
+        const blob = new Blob([data]);
+        const text = await blob.text();
+        // Make file use \r\n line breaks
+        const modifiedText = text.replace(/\n/g, "\r\n");
+        const brokerTransactions = await IBKRAdapter(new Blob([modifiedText]));
+        assertEquals(brokerTransactions.length, 7);
+    },
+});

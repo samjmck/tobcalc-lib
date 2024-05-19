@@ -114,7 +114,7 @@ export async function getCurrencyExchangeRatesMap(start: Date, end: Date, curren
     // Fill in missing dates with the exchange rate closest to the missing date
     // First trying to find the previous date with an exchange rate
     // If that is not possible, then the next date with an exchange rate
-    for (let currentDate = new Date(start); currentDate <= end; currentDate.setDate(currentDate.getDate() + 1)) {
+    for (let currentDate = new Date(start); currentDate <= end; currentDate.setTime(currentDate.getTime() + 86400000)) {
         const date = formatDate(currentDate);
 
         if (!currencyMap.has(date)) {

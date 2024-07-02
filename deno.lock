@@ -4,7 +4,7 @@
     "specifiers": {
       "jsr:@std/assert@0.220.1": "jsr:@std/assert@0.220.1",
       "jsr:@std/assert@^0.220.1": "jsr:@std/assert@0.220.1",
-      "jsr:@std/cli@0.220.1": "jsr:@std/cli@0.220.1",
+      "jsr:@std/cli@^0.224.7": "jsr:@std/cli@0.224.7",
       "jsr:@std/fmt@^0.220.1": "jsr:@std/fmt@0.220.1",
       "npm:fontkit@2.0.2": "npm:fontkit@2.0.2",
       "npm:pdf-lib@1.17.1": "npm:pdf-lib@1.17.1"
@@ -16,11 +16,8 @@
           "jsr:@std/fmt@^0.220.1"
         ]
       },
-      "@std/cli@0.220.1": {
-        "integrity": "6c38388efc899c9d98811d38a46effe01e0d91138068483f1e6ae834caad5e82",
-        "dependencies": [
-          "jsr:@std/assert@^0.220.1"
-        ]
+      "@std/cli@0.224.7": {
+        "integrity": "654ca6477518e5e3a0d3fabafb2789e92b8c0febf1a1d24ba4b567aba94b5977"
       },
       "@std/fmt@0.220.1": {
         "integrity": "3b1a698477a26b1dacbbee26db1a65030a005c6d71db3b3a0e59f8a638f04d7a"
@@ -148,7 +145,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@0.220.1",
-      "jsr:@std/cli@0.220.1",
+      "jsr:@std/cli@^0.224.7",
       "jsr:@std/flags@0.220.1",
       "npm:fontkit@2.0.2",
       "npm:pdf-lib@1.17.1"

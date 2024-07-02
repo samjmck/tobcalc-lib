@@ -38,8 +38,6 @@ Deno.test({
 
         const rates = await getCurrencyExchangeRatesMap(start, end, CurrencyCode.USD);
 
-        console.log(rates);
-
         assertEquals(rates.get("2024-03-29"), 1.0811);
         assertEquals(rates.get("2024-03-30"), 1.0811);
         assertEquals(rates.get("2024-03-31"), 1.0811);

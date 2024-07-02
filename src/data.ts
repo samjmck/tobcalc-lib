@@ -64,8 +64,14 @@ export async function getExchangeRatesMap(currencyPeriods: { start: Date, end: D
 export async function getCurrencyExchangeRatesMap(start: Date, end: Date, currencyCode: CurrencyCode): Promise<Map<string, number>> {
     // See https://sdw-wsrest.ecb.europa.eu/help/
 
-    const startPeriod = formatDate(start);
-    const endPeriod = formatDate(end);
+    const adjustedStartDate = new Date(start);
+    adjustedStartDate.setTime(adjustedStartDate.getTime() - 7 * 86400000);
+
+    const adjustedEndDate = new Date(end);
+    adjustedEndDate.setTime(adjustedEndDate.getTime() + 7 * 86400000);
+
+    const startPeriod = formatDate(adjustedStartDate);
+    const endPeriod = formatDate(adjustedEndDate);
     const params = {
         startPeriod,
         endPeriod,
@@ -88,19 +94,19 @@ export async function getCurrencyExchangeRatesMap(start: Date, end: Date, curren
 
     let foundTimePeriods = false;
     let timePeriods: ECBTimePeriod[] = [];
-    for(const observation of json.structure.dimensions.observation) {
+    for (const observation of json.structure.dimensions.observation) {
         if(observation.id === "TIME_PERIOD") {
             timePeriods = observation.values;
             foundTimePeriods = true;
             break;
         }
     }
-    if(!foundTimePeriods) {
+    if (!foundTimePeriods) {
         throw new Error(`could not find time periods for start date ${startPeriod}, end date ${endPeriod} and currencyCodes ${currencyCode}`);
     }
 
     const currencyMap: Map<string, number> = new Map();
-    for(let i = 0; i < timePeriods.length; i++) {
+    for (let i = 0; i < timePeriods.length; i++) {
         const date = timePeriods[i].name;
         let exchangeRate = <number> json.dataSets[0].observations[`0:0:0:0:0:${i}`][0];
 
@@ -171,7 +177,7 @@ export async function getSecurity(isin: string): Promise<Security> {
         throw new InformativeError("security.fetch.not_found", { isin, json });
     }
 
-    const { quoteType, symbol } = json.quotes[0];
+    const { quoteType } = json.quotes[0];
     const name = json.quotes[0].longname !== undefined ? json.quotes[0].longname : json.quotes[0].shortname;
 
     if(name === undefined) {

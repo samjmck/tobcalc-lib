@@ -3,7 +3,7 @@ import { fillPdf, updatePdfMeta } from "./pdf.ts";
 declare function postMessage(message: any): void;
 
 let previousObjectUrl: string;
-const workerMessageEventListener = async (event: MessageEvent) => {
+const workerMessageEventListener = async (event: MessageEvent): Promise<void> => {
     const parameters = <Parameters<typeof fillPdf>> event.data;
 	const filledPdfBytes = await fillPdf(...parameters);
     const updatedMetadataPdfBytes = await updatePdfMeta(filledPdfBytes);

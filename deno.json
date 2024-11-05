@@ -1,6 +1,6 @@
 {
   "name": "@samjmck/tobcalc-lib",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "exports": "./src/export.ts",
   "publish": {
     "include": [

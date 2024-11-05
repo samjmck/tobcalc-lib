@@ -6,7 +6,7 @@ import { InformativeError } from "./InformativeError.ts";
 // due to CORS, so the way to make this script work in a
 // web app is to change these variables to proxies for the
 // original hostnames
-let ECB_URL_START = "https://sdw-wsrest.ecb.europa.eu";
+let ECB_URL_START = "https://data-api.ecb.europa.eu";
 let YAHOO_FINANCE_QUERY1_URL_START = "https://query1.finance.yahoo.com";
 let JUSTETF_URL_START = "https://justetf.com";
 

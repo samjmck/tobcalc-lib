@@ -2,7 +2,7 @@
 
 A library to calculate the Belgian tax on stock-exchange transactions for foreign brokers and fill in declaration PDF with details. It is the core library used in the [tobcalc website](https://github.com/samjmck/tobcalc).
 
-## Navigation
+## Table of contents
 
 1. [Installation](#installation)
 2. [Documentation](#documentation)
@@ -38,6 +38,10 @@ bunx jsr add @samjmck/tobcalc-lib
 If you are using the library, look at the [usage documentation](docs/usage.md).
 
 If you would like to contribute, look at the [contributing documentation](docs/contributing.md).
+
+If you would like to test your changes in a frontend environment or elsewhere, look at the [frontend testing documentation](docs/frontend_testing.md).
+
+
 
 ## Example
 

@@ -1,5 +1,5 @@
-import { CurrencyCode } from "../enums.ts";
-import { BrokerAdapter, BrokerTransaction } from "../broker_adapter.ts";
+import type { CurrencyCode } from "../enums.ts";
+import type { BrokerAdapter, BrokerTransaction } from "../broker_adapter.ts";
 import { InformativeError } from "../InformativeError.ts";
 
 export const Trading212Adapter: BrokerAdapter = async data => {
@@ -42,7 +42,12 @@ export const Trading212Adapter: BrokerAdapter = async data => {
         }
 
         const row = rowString.split(",");
-        if(row[actionColumnIndex].indexOf(`Market sell`) === -1 && row[actionColumnIndex].indexOf(`Market buy`) === -1) {
+        if (
+            row[actionColumnIndex].indexOf(`Market sell`) === -1 &&
+            row[actionColumnIndex].indexOf(`Market buy`) === -1 &&
+            row[actionColumnIndex].indexOf(`Limit buy`) === -1 &&
+            row[actionColumnIndex].indexOf(`Limit sell`) === -1
+        ) {
             continue;
         }
 

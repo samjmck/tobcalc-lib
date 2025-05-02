@@ -5,12 +5,12 @@ import { CurrencyCode } from "./enums.ts";
 // getServiceTransactions() -> ServiceTransactions[] -> getExchangeRates(), getSecuritiesTypes() -> TaxableTransaction[] -> getTaxFormData()
 
 export interface BrokerTransaction {
-    date: Date;
-    isin: string;
-    currency: CurrencyCode;
-    value: number;
+  date: Date;
+  isin: string;
+  currency: CurrencyCode;
+  value: number;
 }
 
 export interface BrokerAdapter {
-    (data: Blob): Promise<BrokerTransaction[]>;
+  (data: Blob): Promise<BrokerTransaction[]>;
 }

@@ -15,6 +15,6 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v2.3.1
-      - run: deno run --allow-write --allow-net scripts/fetch_registered_funds.ts
+      - run: deno run --allow-write --allow-net --allow-import scripts/fetch_registered_funds.ts
       - run: cd pdfs && ./generate.sh
       - run: deno publish --allow-dirty

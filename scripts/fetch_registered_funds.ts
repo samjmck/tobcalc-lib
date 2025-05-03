@@ -1,5 +1,5 @@
 // @deno-types="https://unpkg.com/xlsx/types/index.d.ts"
-import * as XLSX from "https://unpkg.com/xlsx/xlsx.mjs";
+import * as XLSX from "xlsx";
 
 const response = await fetch(
   "https://www.fsma.be/sites/default/files/media/files/replacement_files/official_lists_fo_NL.xlsx",

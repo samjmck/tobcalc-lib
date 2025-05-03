@@ -103,8 +103,10 @@ export const Trading212Adapter: BrokerAdapter = async (data) => {
       date: new Date(dateString.slice(0, 10)),
       isin: row[isinColumnIndex],
       currency: <CurrencyCode> row[currencyCodeColumnIndex],
-      value: Number(row[pricePerShareColumnIndex].replace(".", "")) *
-        Number(row[numberOfSharesColumnIndex]),
+      value: Math.floor(
+        Number(row[pricePerShareColumnIndex]) * 100 *
+          Number(row[numberOfSharesColumnIndex]),
+      ),
     });
   }
   return brokerTransactions;

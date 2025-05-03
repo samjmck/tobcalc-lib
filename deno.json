@@ -22,11 +22,12 @@
     ]
   },
   "imports": {
-    "@deno/dnt": "jsr:@deno/dnt@^0.41.3",
+    "@deno/dnt": "jsr:@deno/dnt@0.41.3",
     "@std/assert": "jsr:@std/assert@0.220.1",
-    "@std/cli": "jsr:@std/cli@^0.224.7",
+    "@std/cli": "jsr:@std/cli@0.224.7",
     "@std/flags": "jsr:@std/flags@0.220.1",
     "fontkit": "npm:fontkit@2.0.2",
-    "pdf-lib": "npm:pdf-lib@1.17.1"
+    "pdf-lib": "npm:pdf-lib@1.17.1",
+    "xlsx": "https://unpkg.com/xlsx/xlsx.mjs"
   }
 }

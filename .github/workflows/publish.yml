@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - "**"
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -16,6 +20,7 @@ jobs:
       - run: deno test --allow-read --allow-net src/{,**/}*_test.ts
   publish:
     needs: tests
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     permissions:
       contents: read

@@ -15,23 +15,23 @@ import {
   setYahooFinanceQuery1UrlStart,
 } from "./data.ts";
 import {
-  FormRow,
+  type FormRow,
   getDefaultTaxRate,
   getTaxableTransactions,
   getTaxFormData,
-  TaxableTransaction,
-  TaxFormData,
-  TaxRateFunction,
+  type TaxableTransaction,
+  type TaxFormData,
+  type TaxRateFunction,
 } from "./tax.ts";
 import { isNameRegistered } from "./tax.ts";
 import {
   CountryCode,
   CurrencyCode,
   eeaCountries,
-  ETF,
-  Security,
+  type ETF,
+  type Security,
   SecurityType,
-  Stock,
+  type Stock,
   TransactionType,
 } from "./enums.ts";
 import { formatMoney } from "./formatting.ts";

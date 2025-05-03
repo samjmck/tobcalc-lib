@@ -7,7 +7,7 @@ import {
   PDFDocument,
   PDFName,
   PDFRawStream,
-  PDFRef,
+  type PDFRef,
   PDFStream,
   PDFString,
   rgb,

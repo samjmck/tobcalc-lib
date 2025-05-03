@@ -1,4 +1,3 @@
-// @deno-types="https://unpkg.com/xlsx/types/index.d.ts"
 import * as XLSX from "xlsx";
 
 const response = await fetch(

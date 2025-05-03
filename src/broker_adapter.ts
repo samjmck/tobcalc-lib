@@ -1,4 +1,4 @@
-import { CurrencyCode } from "./enums.ts";
+import type { CurrencyCode } from "./enums.ts";
 
 // https://eservices.minfin.fgov.be/myminfin-web/pages/fisconet/document/07143c83-8ef9-4d85-a5fd-7564b0393e1b#_Toc513120036
 

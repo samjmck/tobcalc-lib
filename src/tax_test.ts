@@ -1,12 +1,12 @@
-import { BrokerTransaction } from "./broker_adapter.ts";
+import type { BrokerTransaction } from "./broker_adapter.ts";
 import { CountryCode, CurrencyCode, SecurityType } from "./enums.ts";
 import {
-  FormRow,
+  type FormRow,
   getDefaultTaxRate,
   getTaxableTransactions,
   getTaxFormData,
   isNameRegistered,
-  TaxableTransaction,
+  type TaxableTransaction,
 } from "./tax.ts";
 import { assertEquals, assertObjectMatch } from "@std/assert";
 import { getDefaultSecuritiesMap } from "./data.ts";

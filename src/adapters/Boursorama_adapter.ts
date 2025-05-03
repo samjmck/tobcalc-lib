@@ -1,5 +1,5 @@
-import { CurrencyCode } from "../enums.ts";
-import { BrokerAdapter, BrokerTransaction } from "../broker_adapter.ts";
+import type { CurrencyCode } from "../enums.ts";
+import type { BrokerAdapter, BrokerTransaction } from "../broker_adapter.ts";
 import { InformativeError } from "../InformativeError.ts";
 import { moneyToNumber } from "../broker_reading.ts";
 

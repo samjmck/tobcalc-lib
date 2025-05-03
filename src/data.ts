@@ -1,4 +1,4 @@
-import { CurrencyCode, Security, SecurityType } from "./enums.ts";
+import { CurrencyCode, type Security, SecurityType } from "./enums.ts";
 import { InformativeError } from "./InformativeError.ts";
 
 // Why do we need these variables and not make them constants?

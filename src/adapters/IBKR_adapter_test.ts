@@ -1,6 +1,6 @@
 import { IBKRAdapter } from "./IBKR_adapter.ts";
 import { assertEquals } from "@std/assert";
-import { BrokerTransaction } from "../broker_adapter.ts";
+import type { BrokerTransaction } from "../broker_adapter.ts";
 import { CurrencyCode } from "../enums.ts";
 
 Deno.test({

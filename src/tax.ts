@@ -2,11 +2,11 @@ import {
   CountryCode,
   CurrencyCode,
   eeaCountries,
-  Security,
+  type Security,
   SecurityType,
 } from "./enums.ts";
 import { formatDate, getExchangeRatesMap } from "./data.ts";
-import { BrokerTransaction } from "./broker_adapter.ts";
+import type { BrokerTransaction } from "./broker_adapter.ts";
 import { InformativeError } from "./InformativeError.ts";
 import { lowerCaseRegisteredFunds } from "./registered_funds.ts";
 

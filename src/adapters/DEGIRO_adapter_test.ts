@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { BrokerTransaction } from "../broker_adapter.ts";
+import type { BrokerTransaction } from "../broker_adapter.ts";
 import { CurrencyCode } from "../enums.ts";
 import { DEGIROAdapter } from "./DEGIRO_adapter.ts";
 

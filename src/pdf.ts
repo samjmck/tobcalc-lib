@@ -1,16 +1,16 @@
 import {
   CustomFontEmbedder,
   decodePDFRawStream,
-  PDFArray,
+  type PDFArray,
   PDFDict,
   PDFDocument,
   PDFFont,
   PDFName,
-  PDFPage,
-  PDFRawStream,
-  PDFRef,
+  type PDFPage,
+  type PDFRawStream,
+  type PDFRef,
   PDFString,
-  PDFTextField,
+  type PDFTextField,
 } from "pdf-lib";
 import * as fontkit from "fontkit";
 import { formatMoney } from "./formatting.ts";

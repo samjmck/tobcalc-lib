@@ -2,7 +2,7 @@ import { IBKRAdapter } from "./adapters/IBKR_adapter.ts";
 import { DEGIROAdapter } from "./adapters/DEGIRO_adapter.ts";
 import { Trading212Adapter } from "./adapters/Trading212_adapter.ts";
 import { BoursoramaAdapter } from "./adapters/Boursorama_adapter.ts";
-import { BrokerAdapter, BrokerTransaction } from "./broker_adapter.ts";
+import type { BrokerAdapter, BrokerTransaction } from "./broker_adapter.ts";
 import { InformativeError } from "./InformativeError.ts";
 import {
   exchangeRatesMap,

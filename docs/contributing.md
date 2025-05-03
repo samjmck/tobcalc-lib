@@ -1,39 +1,37 @@
-## Contributing to tobcalc-lib
+# Contributing to tobcalc-lib
 
-### Table of contents
+## Table of contents
 
 1. [Environment setup](#environment-setup)
-2. [Making a merge request](#making-a-merge-request)
-3. [Adding support for a new broker](#adding-support-for-a-new-broker)
+2. [Adding support for a new broker](#adding-support-for-a-new-broker)
 
 If you are looking for how to use the library instead of contributing, look at
 the [usage documentation](/docs/usage.md) instead.
 
-### Environment setup
+## Environment setup
 
 There are a number of options when it comes to creating this environment:
 
-#### 1. Use the GitHub Codespace
+### 1. Use the GitHub Codespace
 
 GitHub Codespace is a which is a VS Code environment in the browser that is
 connected to a copy of the repository and a virtual machine with everything
-already installed to start contributing. This includes Deno and the correct VS
-Code settings.
+already installed to start contributing. This includes Deno.
 
 Navigate to the repository and click on the "Code" button. Then click on "Open
 with Codespaces". This will open a new browser tab with the VS Code environment.
 
-#### 2. Cloning the repository and setting up the environment locally
+### 2. Cloning the repository and setting up the environment locally
 
 Clone the repository and install Deno version 2.3. Other Deno versions may or
 may not work.
 
-#### 3. Clone the repository and use the devcontainer
+### 3. Clone the repository and use the devcontainer
 
 Clone the repository and use the devcontainer config. This will include all
 dependencies such as Deno required for a local developer environment.
 
-### Adding support for a new broker
+## Adding support for a new broker
 
 To add a broker, you need to write a `BrokerAdapter` which takes a data `Blob`
 as input and outputs an array of `BrokerTransaction`.

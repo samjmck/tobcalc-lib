@@ -1,24 +1,35 @@
-// Converts a value such as "101.11", "90.10", "90.1" to 10111, 9010, 9010 of type number
+/**
+ * Parses a `money` string into a number
+ * @param {string} money The string that is being parsed
+ * @param {string} [decimalSeparator=.] The string or character that is used to separate decimals from the whole number
+ * @param {number|null} [decimalCount=2] The number of decimals in the `money` parameter. All decimals up to that number
+ * of decimals will be part of the whole number. e.g. `1.23` with `decimalCount=2` would return `123`. `null` means
+ * the decimal count is determined by number of characters after the decimal separator in the money string.
+ */
 export function moneyToNumber(
   money: string,
   decimalSeparator = ".",
-  expectedDecimals = 2,
+  decimalCount: number | null = 2,
 ) {
   const decimalSeparatorIndex = money.indexOf(decimalSeparator);
-  if (decimalSeparatorIndex == -1) {
-    return Number(money) * (10 ** expectedDecimals);
+
+  let decimalsFound: number;
+  if (decimalSeparatorIndex === -1) {
+    decimalsFound = 0;
+  } else {
+    decimalsFound = money.length - decimalSeparatorIndex - 1;
   }
 
-  // ".10"
-  // length = 3
-  // decimalSeparatorIndex = 0
-  // decimalSeparatorIndex + 1 = 1
-  // decimals = length - (decimalSeparatorIndex + 1) = 3 - 1 = 2
-  const decimals = money.length - decimalSeparatorIndex - 1;
+  // Auto-detect expected decimals by looking at the number of numbers behind the
+  // decimal separator. If there is no decimal separator, then expect the number
+  // of decimals to be 0
+  let exponent: number;
+  if (decimalCount === null) {
+    exponent = decimalsFound;
+  } else {
+    exponent = decimalCount - decimalsFound;
+  }
 
-  // eg. ".10" -> decimals already 2, replace "." and convert to number which will be integer
-  //     ".1" -> decimals 1 when we are expecting 2, replace "." and convert to number which will be integer and
-  //     then * 10 to compensate for rounded decimal
   return Number(money.replace(decimalSeparator, "")) *
-    (10 ** (expectedDecimals - decimals));
+    (10 ** exponent);
 }

@@ -1,6 +1,7 @@
 import type { CurrencyCode } from "../enums.ts";
 import type { BrokerAdapter, BrokerTransaction } from "../broker_adapter.ts";
 import { InformativeError } from "../InformativeError.ts";
+import { moneyToNumber } from "../broker_reading.ts";
 
 export const Trading212Adapter: BrokerAdapter = async (data) => {
   const text = await data.text();
@@ -103,10 +104,8 @@ export const Trading212Adapter: BrokerAdapter = async (data) => {
       date: new Date(dateString.slice(0, 10)),
       isin: row[isinColumnIndex],
       currency: <CurrencyCode> row[currencyCodeColumnIndex],
-      value: Math.floor(
-        Number(row[pricePerShareColumnIndex]) * 100 *
-          Number(row[numberOfSharesColumnIndex]),
-      ),
+      value: moneyToNumber(row[pricePerShareColumnIndex]) *
+        Number(row[numberOfSharesColumnIndex]),
     });
   }
   return brokerTransactions;

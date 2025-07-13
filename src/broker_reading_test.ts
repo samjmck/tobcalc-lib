@@ -16,5 +16,8 @@ Deno.test({
     assertEquals(moneyToNumber("1000,10", ","), 1000_10);
     assertEquals(moneyToNumber("1000,1", ","), 1000_10);
     assertEquals(moneyToNumber("1000."), 1000_00);
+    assertEquals(moneyToNumber("1000.000", ".", 2), 1000_00);
+    assertEquals(moneyToNumber("1000.001", ".", 2), 1000_00.1);
+    assertEquals(moneyToNumber("1000.01", ".", 3), 1000_010);
   },
 });

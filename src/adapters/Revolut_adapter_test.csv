@@ -1,0 +1,13 @@
+Income from Sells,,,,,,,,,,
+Date acquired,Date sold,Symbol,Security name,ISIN,Country,Quantity,Cost basis,Gross proceeds,Gross PnL,Currency
+2025-03-14,2025-03-28,V,Visa,US92826C8394,US,6.85938264,2244.39,2345.98,101.59,USD
+2025-04-08,2025-04-28,GOOGL,Alphabet (Class A),US02079K3059,US,35.56396348,5376.56,5723.44,346.88,USD
+2025-04-09,2025-06-25,ASME,ASML Holding N.V.,NL0010273215,EU,7.89095072,4852.15,5563.12,710.97,EUR
+2025-04-29,2025-06-26,04Q,Nordea Bank Abp,FI4000297767,EU,299,3593.98,3704.61,110.63,EUR
+,,,,IE00BCRY6003,,,,,,
+Other income & fees,,,,,,,,,,
+Date,Symbol,Security name,ISIN,Country,Gross amount,Withholding tax,Net Amount,Currency,,
+2025-02-20,ASML,ASML Holding dividend,USN070592100,US,11.95,â¬1.79,â¬10.16,EUR,,
+2025-06-17,GOOGL,Alphabet (Class A) dividend,US02079K3059,US,3.26,â¬0.48,â¬2.78,EUR,,
+2025-06-27,2B7F,iShares Automation &amp; Robotics UCITS ETF USD (Dist) dividend,IE00BYWZ0333,IE,5.52,$0,â¬5.52,EUR,,
+2025-07-01,IS3K,iShares Short Duration High Yield Corporate Bond ETF (Dist) dividend,IE00BCRY6003,IE,10.74,$0,â¬10.74,EUR,,

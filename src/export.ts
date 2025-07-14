@@ -1,5 +1,6 @@
 import { IBKRAdapter } from "./adapters/IBKR_adapter.ts";
 import { DEGIROAdapter } from "./adapters/DEGIRO_adapter.ts";
+import { RevolutAdapter } from "./adapters/Revolut_adapter.ts";
 import { Trading212Adapter } from "./adapters/Trading212_adapter.ts";
 import { BoursoramaAdapter } from "./adapters/Boursorama_adapter.ts";
 import type { BrokerAdapter, BrokerTransaction } from "./broker_adapter.ts";
@@ -44,6 +45,7 @@ export {
   CountryCode,
   CurrencyCode,
   DEGIROAdapter,
+  RevolutAdapter,
   eeaCountries,
   exchangeRatesMap,
   fillPdf,

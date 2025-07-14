@@ -2,6 +2,7 @@ import { parseArgs } from "@std/cli/parse-args";
 import type { BrokerAdapter } from "../src/broker_adapter.ts";
 import { BoursoramaAdapter } from "../src/adapters/Boursorama_adapter.ts";
 import { DEGIROAdapter } from "../src/adapters/DEGIRO_adapter.ts";
+import { RevolutAdapter } from "../src/adapters/Revolut_adapter.ts";
 import { IBKRAdapter } from "../src/adapters/IBKR_adapter.ts";
 import { Trading212Adapter } from "../src/adapters/Trading212_adapter.ts";
 import {
@@ -32,6 +33,8 @@ if (args.type == "boursorama") {
   adapter = IBKRAdapter;
 } else if (args.type == "trading212") {
   adapter = Trading212Adapter;
+} else if (args.type == "revolut") {
+  adapter = RevolutAdapter;
 } else {
   console.error("Invalid broker type");
   Deno.exit(1);

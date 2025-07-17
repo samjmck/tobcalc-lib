@@ -6,7 +6,12 @@ export function moneyToNumber(
 ) {
   const decimalSeparatorIndex = money.indexOf(decimalSeparator);
   if (decimalSeparatorIndex == -1) {
-    return Number(money) * (10 ** expectedDecimals);
+    const value = Number(money) * (10 ** expectedDecimals);
+    if (value > 0) {
+      return Math.ceil(value);
+    } else {
+      return Math.floor(value);
+    }
   }
 
   // ".10"
@@ -19,6 +24,11 @@ export function moneyToNumber(
   // eg. ".10" -> decimals already 2, replace "." and convert to number which will be integer
   //     ".1" -> decimals 1 when we are expecting 2, replace "." and convert to number which will be integer and
   //     then * 10 to compensate for rounded decimal
-  return Number(money.replace(decimalSeparator, "")) *
+  const value = Number(money.replace(decimalSeparator, "")) *
     (10 ** (expectedDecimals - decimals));
+  if (value > 0) {
+    return Math.ceil(value);
+  } else {
+    return Math.floor(value);
+  }
 }

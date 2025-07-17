@@ -4,6 +4,7 @@ import { moneyToNumber } from "./broker_reading.ts";
 Deno.test({
   name: "moneyToNumber",
   fn: () => {
+    assertEquals(moneyToNumber("-1"), -1_00);
     assertEquals(moneyToNumber("1"), 1_00);
     assertEquals(moneyToNumber("1.0"), 1_00);
     assertEquals(moneyToNumber("1.00"), 1_00);

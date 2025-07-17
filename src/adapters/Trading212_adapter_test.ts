@@ -38,7 +38,7 @@ Deno.test({
         date: new Date("2021-07-13"),
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
-        value: 301_22,
+        value: -301_22,
       },
     );
     assertEquals(
@@ -56,7 +56,7 @@ Deno.test({
         date: new Date("2021-08-16"),
         isin: "US4781601046",
         currency: CurrencyCode.USD,
-        value: 301_55,
+        value: -301_55,
       },
     );
     assertEquals(

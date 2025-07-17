@@ -12,7 +12,6 @@ export function moneyToNumber(
   decimalCount: number | null = 2,
 ) {
   const decimalSeparatorIndex = money.indexOf(decimalSeparator);
-
   let decimalsFound: number;
   if (decimalSeparatorIndex === -1) {
     decimalsFound = 0;
@@ -30,6 +29,11 @@ export function moneyToNumber(
     exponent = decimalCount - decimalsFound;
   }
 
-  return Number(money.replace(decimalSeparator, "")) *
-    (10 ** exponent);
+  const value = Number(money.replace(decimalSeparator, "")) *
+      (10 ** exponent);
+  if (value > 0) {
+    return Math.ceil(value);
+  } else {
+    return Math.floor(value);
+  }
 }

@@ -18,7 +18,7 @@ Deno.test({
         date: new Date("2022-02-02"),
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
-        value: 357_36,
+        value: -357_36,
       },
     );
     assertEquals(
@@ -27,7 +27,7 @@ Deno.test({
         date: new Date("2022-02-02"),
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
-        value: 357_36,
+        value: -357_36,
       },
     );
     assertEquals(
@@ -36,7 +36,7 @@ Deno.test({
         date: new Date("2022-02-02"),
         isin: "IE00BK5BQT80",
         currency: CurrencyCode.EUR,
-        value: 791_75,
+        value: -791_75,
       },
     );
     assertEquals(
@@ -45,7 +45,7 @@ Deno.test({
         date: new Date("2022-02-02"),
         isin: "IE00BFY0GT14",
         currency: CurrencyCode.EUR,
-        value: 1305_57,
+        value: -1305_57,
       },
     );
     assertEquals(
@@ -54,7 +54,7 @@ Deno.test({
         date: new Date("2022-02-02"),
         isin: "US0378331005",
         currency: CurrencyCode.USD,
-        value: 1381_75,
+        value: -1381_75,
       },
     );
     assertEquals(
@@ -63,7 +63,7 @@ Deno.test({
         date: new Date("2022-02-02"),
         isin: "IE00BFY0GT14",
         currency: CurrencyCode.EUR,
-        value: 303_11,
+        value: -303_11,
       },
     );
     assertEquals(
@@ -72,7 +72,7 @@ Deno.test({
         date: new Date("2022-02-02"),
         isin: "IE00BFY0GT14",
         currency: CurrencyCode.EUR,
-        value: 303_10,
+        value: -303_10,
       },
     );
     assertEquals(brokerTransactions.length, 7);

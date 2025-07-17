@@ -10,11 +10,11 @@ the [usage documentation](/docs/usage.md) instead.
 
 ## Environment setup
 
-There are a number of options when it comes to creating this environment:
+There are a number of options when it comes to creating the environment required to develop and test the library.
 
 ### 1. Use the GitHub Codespace
 
-GitHub Codespace is a which is a VS Code environment in the browser that is
+GitHub Codespace is a VS Code environment in the browser that is
 connected to a copy of the repository and a virtual machine with everything
 already installed to start contributing. This includes Deno.
 
@@ -41,13 +41,14 @@ The interfaces for `BrokerAdapter` and `BrokerTransaction` are defined in
 
 ```ts
 interface BrokerTransaction {
-  date: Date;
-  isin: string;
-  currency: CurrencyCode;
-  value: number;
+	date: Date;
+	isin: string;
+	currency: CurrencyCode;
+	value: number;
 }
+
 interface BrokerAdapter {
-  (data: Blob): Promise<BrokerTransaction[]>;
+	(data: Blob): Promise<BrokerTransaction[]>;
 }
 ```
 
@@ -57,13 +58,17 @@ data into a format the codebase understands. The data the function receives is
 normally in the form of a `csv` or `xlsx` file with raw data wrapped in a `Blob`
 object.
 
+It is important to note that we see transactions from a cash flow perspective. This means that buy transactions have a
+_negative_ value since they are a debit to your account, and that the quantity of shares is positive. Sell transactions
+have a _positive_ value since they are a credit to your account and the quantity of shares is negative.
+
 Start with defining a function that implements the `BrokerAdapter` interface, as
 follows:
 
 ```ts
 const MyAdapter: BrokerAdapter = async (data) => {
-  const brokerTransactions: BrokerTransaction[] = [];
-  return brokerTransactions;
+	const brokerTransactions: BrokerTransaction[] = [];
+	return brokerTransactions;
 };
 ```
 
@@ -75,53 +80,53 @@ example of how to process a `csv` file:
 
 ```ts
 export const IBKRAdapter: BrokerAdapter = async (data) => {
-  // Convert data blob to a string
-  const text = await data.text();
+	// Convert data blob to a string
+	const text = await data.text();
 
-  // Rows are separated by a line break or "\n", we want to split the string up into the rows
-  // separated by \n
-  const rows = text.split("\n");
+	// Rows are separated by a line break or "\n", we want to split the string up into the rows
+	// separated by \n
+	const rows = text.split("\n");
 
-  // The first row of a csv contains the names of columns
-  const columnNamesRow = rows[0];
+	// The first row of a csv contains the names of columns
+	const columnNamesRow = rows[0];
 
-  // Each column in a row is seperated by a comma - we can get the column names by splitting
-  // the first row by
-  const columnNames = rows[0].split(",");
+	// Each column in a row is seperated by a comma - we can get the column names by splitting
+	// the first row by
+	const columnNames = rows[0].split(",");
 
-  // Recall the properties of a BrokerTransaction: date, isin, currency and value
-  // We want to extract these properties from the input data
-  // To do so, we need the indexes of the columns of those properties
-  // We can find them by looking in the header row with the column names
-  const dateColumnIndex = columnNames.indexOf(`"TradeDate"`);
-  const isinColumnIndex = columnNames.indexOf(`"ISIN"`);
-  const currencyCodeColumnIndex = columnNames.indexOf(`"CurrencyPrimary"`);
-  const valueColumnIndex = columnNames.indexOf(`"Amount"`);
+	// Recall the properties of a BrokerTransaction: date, isin, currency and value
+	// We want to extract these properties from the input data
+	// To do so, we need the indexes of the columns of those properties
+	// We can find them by looking in the header row with the column names
+	const dateColumnIndex = columnNames.indexOf(`"TradeDate"`);
+	const isinColumnIndex = columnNames.indexOf(`"ISIN"`);
+	const currencyCodeColumnIndex = columnNames.indexOf(`"CurrencyPrimary"`);
+	const valueColumnIndex = columnNames.indexOf(`"Amount"`);
 
-  const brokerTransactions: BrokerTransaction[] = [];
-  // Now we want to loop over all the rows except the header row, hence the slice(1, -1)
-  for (const rowString of rows.slice(1, -1)) {
-    // Split the columns of the row into an array
-    // And then remove the quotes which encapsulate every column value
-    const row = rowString.split(",").map((s) => s.substring(1, s.length - 1));
+	const brokerTransactions: BrokerTransaction[] = [];
+	// Now we want to loop over all the rows except the header row, hence the slice(1, -1)
+	for (const rowString of rows.slice(1, -1)) {
+		// Split the columns of the row into an array
+		// And then remove the quotes which encapsulate every column value
+		const row = rowString.split(",").map((s) => s.substring(1, s.length - 1));
 
-    // Save date in a variable so we can easily reuse while creating a Date object
-    const dateString = row[dateColumnIndex];
+		// Save date in a variable so we can easily reuse while creating a Date object
+		const dateString = row[dateColumnIndex];
 
-    brokerTransactions.push({
-      // Date is in format YYYYMMDD
-      date: new Date(
-        `${dateString.substring(0, 4)}-${dateString.substring(4, 6)}-${
-          dateString.substring(6, 8)
-        }`,
-      ),
-      isin: row[isinColumnIndex],
-      currency: <CurrencyCode> row[currencyCodeColumnIndex],
-      // Number() to convert string into number and * 100 to convert into integer
-      value: Number(row[valueColumnIndex]) * 100,
-    });
-  }
-  return brokerTransactions;
+		brokerTransactions.push({
+			// Date is in format YYYYMMDD
+			date: new Date(
+				`${dateString.substring(0, 4)}-${dateString.substring(4, 6)}-${
+					dateString.substring(6, 8)
+				}`,
+			),
+			isin: row[isinColumnIndex],
+			currency: <CurrencyCode>row[currencyCodeColumnIndex],
+			// Number() to convert string into number and * 100 to convert into integer
+			value: Number(row[valueColumnIndex]) * 100,
+		});
+	}
+	return brokerTransactions;
 };
 ```
 
@@ -131,24 +136,24 @@ for doing so:
 
 ```ts
 Deno.test({
-  name: "adapter converting csv to taxable transactions",
-  permissions: {
-    read: true,
-  },
-  fn: async () => {
-    const data = await Deno.readFile("src/adapters/broker_adapter_test.csv");
-    const brokerTransactions = await IBKRAdapter(new Blob([data]));
+	name: "adapter converting csv to taxable transactions",
+	permissions: {
+		read: true,
+	},
+	fn: async () => {
+		const data = await Deno.readFile("src/adapters/broker_adapter_test.csv");
+		const brokerTransactions = await IBKRAdapter(new Blob([data]));
 
-    assertEquals(
-      brokerTransactions[0],
-      <Brokerransaction> {
-        // Depending on the example data in your file
-        date: new Date("2022-02-02"),
-        isin: "IE00BFY0GT14",
-        currency: CurrencyCode.EUR,
-        value: 1381_75,
-      },
-    );
-  },
+		assertEquals(
+			brokerTransactions[0],
+			<BrokerTransaction>{
+				// Depending on the example data in your file
+				date: new Date("2022-02-02"),
+				isin: "IE00BFY0GT14",
+				currency: CurrencyCode.EUR,
+				value: 1381_75,
+			},
+		);
+	},
 });
 ```

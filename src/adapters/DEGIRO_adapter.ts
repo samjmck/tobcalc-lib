@@ -40,11 +40,6 @@ export const DEGIROAdapter: BrokerAdapter = async (data) => {
       throw new InformativeError("degiro_adapter.value_undefined", { row });
     }
 
-    let value = moneyToNumber(row[valueColumnIndex]);
-    if (value < 0) {
-      value *= -1;
-    }
-
     brokerTransactions.push({
       // Date is in format DD-MM-YYYY
       date: new Date(
@@ -55,7 +50,7 @@ export const DEGIROAdapter: BrokerAdapter = async (data) => {
       isin: row[isinColumnIndex],
       currency: <CurrencyCode> row[currencyCodeColumnIndex],
       // Number() to convert string into number and * 100 to convert into integer
-      value: value,
+      value: moneyToNumber(row[valueColumnIndex]),
     });
   }
   return brokerTransactions;

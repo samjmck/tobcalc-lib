@@ -27,7 +27,7 @@ Deno.test({
         date: new Date("2021-11-17"),
         isin: "GB00BL9YR756",
         currency: CurrencyCode.GBX,
-        value: 42968_00,
+        value: -42968_00,
       },
     );
     assertEquals(
@@ -45,7 +45,7 @@ Deno.test({
         date: new Date("2021-04-03"),
         isin: "IE00BK5BQT80",
         currency: CurrencyCode.EUR,
-        value: 2148_52,
+        value: -2148_52,
       },
     );
     assertEquals(brokerTransactions.length, 4);

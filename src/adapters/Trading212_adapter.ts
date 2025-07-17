@@ -99,13 +99,20 @@ export const Trading212Adapter: BrokerAdapter = async (data) => {
       );
     }
 
+    let isPurchase = row[actionColumnIndex].indexOf(`Market buy`) !== -1 ||
+      row[actionColumnIndex].indexOf(`Limit buy`) !== -1;
+    let value = moneyToNumber(row[pricePerShareColumnIndex]) *
+      Number(row[numberOfSharesColumnIndex]);
+    if (isPurchase) {
+      value *= -1;
+    }
+
     brokerTransactions.push({
       // Date is in format YYYY-MM-DD HH:mm:ss
       date: new Date(dateString.slice(0, 10)),
       isin: row[isinColumnIndex],
       currency: <CurrencyCode> row[currencyCodeColumnIndex],
-      value: moneyToNumber(row[pricePerShareColumnIndex]) *
-        Number(row[numberOfSharesColumnIndex]),
+      value,
     });
   }
   return brokerTransactions;

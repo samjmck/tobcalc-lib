@@ -20,7 +20,7 @@ Deno.test({
         date: new Date(2023, 1, 6), // 2023-06-02
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
-        value: 219_24,
+        value: -219_24,
       },
     );
     assertEquals(
@@ -29,7 +29,7 @@ Deno.test({
         date: new Date(2023, 1, 2), // 2023-02-02
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
-        value: 144_66,
+        value: -144_66,
       },
     );
     assertEquals(brokerTransactions.length, 2);
@@ -77,7 +77,7 @@ Deno.test({
         date: new Date(2023, 3, 3), // 2023-04-03
         isin: "LU1781541179",
         currency: CurrencyCode.EUR,
-        value: 307_28,
+        value: -307_28,
       },
     );
     assertEquals(
@@ -86,7 +86,7 @@ Deno.test({
         date: new Date(2023, 3, 3), // 2023-04-03
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
-        value: 290_80,
+        value: -290_80,
       },
     );
     assertEquals(brokerTransactions.length, 2);

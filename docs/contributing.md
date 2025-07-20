@@ -59,8 +59,8 @@ normally in the form of a `csv` or `xlsx` file with raw data wrapped in a `Blob`
 object.
 
 It is important to note that we see transactions from a cash flow perspective. This means that buy transactions have a
-_negative_ value since they are a debit to your account, and that the quantity of shares is positive. Sell transactions
-have a _positive_ value since they are a credit to your account and the quantity of shares is negative.
+_negative_ value since they are a debit to your account. Sell transactions
+have a _positive_ value since they are a credit to your account.
 
 Start with defining a function that implements the `BrokerAdapter` interface, as
 follows:

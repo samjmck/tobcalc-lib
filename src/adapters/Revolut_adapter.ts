@@ -1,15 +1,11 @@
 import type { CurrencyCode } from "../enums.ts";
 import type { BrokerAdapter, BrokerTransaction } from "../broker_adapter.ts";
+import { moneyToNumber } from "../broker_reading.ts";
 
 export const RevolutAdapter: BrokerAdapter = async (data) => {
   const text = await data.text();
   const brokerTransactions: BrokerTransaction[] = [];
 
-  // Helper to clean and convert values to cents
-  function parseToCents(val: string): number {
-    const num = parseFloat(val);
-    return Math.round(num * 100);
-  }
 
   const lines = text.split(/\r?\n/);
   let i = 0;
@@ -74,13 +70,13 @@ export const RevolutAdapter: BrokerAdapter = async (data) => {
           date: new Date(dateAcquired),
           isin,
           currency,
-          value: parseToCents(costBasis),
+          value: moneyToNumber(costBasis),
         });
         brokerTransactions.push({
           date: new Date(dateSold),
           isin,
           currency,
-          value: parseToCents(grossProceeds),
+          value: moneyToNumber(grossProceeds),
         });
       }
       i++;

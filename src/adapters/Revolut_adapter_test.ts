@@ -18,7 +18,7 @@ Deno.test({
         date: new Date("2025-03-14"),
         isin: "US92826C8394",
         currency: CurrencyCode.USD,
-        value: 224439,
+        value: -2244_39,
       },
     );
     assertEquals(
@@ -27,7 +27,7 @@ Deno.test({
         date: new Date("2025-03-28"),
         isin: "US92826C8394",
         currency: CurrencyCode.USD,
-        value: 234598,
+        value: 2345_98,
       },
     );
 
@@ -37,7 +37,7 @@ Deno.test({
         date: new Date("2025-04-08"),
         isin: "US02079K3059",
         currency: CurrencyCode.USD,
-        value: 537656,
+        value: -5376_56,
       },
     );
     assertEquals(
@@ -46,7 +46,7 @@ Deno.test({
         date: new Date("2025-04-28"),
         isin: "US02079K3059",
         currency: CurrencyCode.USD,
-        value: 572344,
+        value: 5723_44,
       },
     );
 
@@ -56,7 +56,7 @@ Deno.test({
         date: new Date("2025-04-09"),
         isin: "NL0010273215",
         currency: CurrencyCode.EUR,
-        value: 485215,
+        value: -4852_15,
       },
     );
     assertEquals(
@@ -65,7 +65,7 @@ Deno.test({
         date: new Date("2025-06-25"),
         isin: "NL0010273215",
         currency: CurrencyCode.EUR,
-        value: 556312,
+        value: 5563_12,
       },
     );
 
@@ -75,7 +75,7 @@ Deno.test({
         date: new Date("2025-04-29"),
         isin: "FI4000297767",
         currency: CurrencyCode.EUR,
-        value: 359398,
+        value: -3593_98,
       },
     );
     assertEquals(

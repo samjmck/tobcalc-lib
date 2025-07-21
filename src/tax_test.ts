@@ -37,13 +37,13 @@ Deno.test({
         date: new Date("21 February 2022 00:00:00 GMT"),
         isin: "IE00B4L5Y983", // IWDA
         currency: CurrencyCode.EUR,
-        value: 1000_00,
+        value: -1000_00,
       },
       {
         date: new Date("25 February 2022 00:00:00 GMT"),
         isin: "US0378331005", // AAPL,
         currency: CurrencyCode.USD,
-        value: 100_00, // EURUSD on 25 Feb -> 1.1216
+        value: -100_00, // EURUSD on 25 Feb -> 1.1216
       },
     ];
     const taxableTransactions = await getTaxableTransactions(
@@ -59,7 +59,7 @@ Deno.test({
     // vs  "Vanguard FTSE All-World UCITS ETF USD Accumulation" (Investing.com & Yahoo Finance)
     // vs  "Vanguard FTSE All-World UCITS ETF USD Acc" (Google Finance)
     assertObjectMatch(taxableTransactionIWDA, {
-      value: 1000_00,
+      value: -1000_00,
       countryCode: CountryCode.Ireland,
       security: {
         type: SecurityType.ETF,
@@ -70,7 +70,7 @@ Deno.test({
     const taxableTransactionAAPL = taxableTransactions[1];
     const exchangeRate = 1 / 1.1216;
     assertObjectMatch(taxableTransactionAAPL, {
-      value: 100_00 * exchangeRate,
+      value: -100_00 * exchangeRate,
       countryCode: CountryCode.UnitedStates,
       security: {
         type: SecurityType.Stock,
@@ -84,7 +84,7 @@ Deno.test({
   fn: () => {
     assertEquals(
       getDefaultTaxRate({ // ETF in EEA, accumulating
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -98,7 +98,7 @@ Deno.test({
 
     assertEquals(
       getDefaultTaxRate({ // ETF in EEA, distributing
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -112,7 +112,7 @@ Deno.test({
 
     assertEquals(
       getDefaultTaxRate({ // ETF not in EEA, accumulating
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -126,7 +126,7 @@ Deno.test({
 
     assertEquals(
       getDefaultTaxRate({ // ETF not in EEA, distributing
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -140,7 +140,7 @@ Deno.test({
 
     assertEquals(
       getDefaultTaxRate({ // ETF in Belgium, accumulating
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -154,7 +154,7 @@ Deno.test({
 
     assertEquals(
       getDefaultTaxRate({ // ETF in Belgium, distributing
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -168,7 +168,7 @@ Deno.test({
 
     assertEquals(
       getDefaultTaxRate({ // Stock (in US)
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.Stock,
@@ -186,7 +186,7 @@ Deno.test({
   fn: () => {
     const taxableTransactions: TaxableTransaction[] = [
       { // ETF in EEA, accumulating       0.0012
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -196,7 +196,7 @@ Deno.test({
         countryCode: CountryCode.Ireland,
       },
       { // ETF in EEA, distributing       0.0012
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -206,7 +206,7 @@ Deno.test({
         countryCode: CountryCode.Ireland,
       },
       { // ETF not in EEA, accumulating   0.0035
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -216,7 +216,7 @@ Deno.test({
         countryCode: CountryCode.Switzerland,
       },
       { // ETF not in EEA, distributing   0.0035
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -226,7 +226,7 @@ Deno.test({
         countryCode: CountryCode.Switzerland,
       },
       { // ETF in Belgium, accumulating   0.0132
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -236,7 +236,7 @@ Deno.test({
         countryCode: CountryCode.Belgium,
       },
       { // ETF in Belgium, distributing   0.0012
-        value: 100_00,
+        value: -100_00,
         security: {
           name: "",
           type: SecurityType.ETF,
@@ -246,6 +246,15 @@ Deno.test({
         countryCode: CountryCode.Belgium,
       },
       { // Stock (in US)  0.0035
+        value: -100_00,
+        security: {
+          name: "",
+          type: SecurityType.Stock,
+          isin: "",
+        },
+        countryCode: CountryCode.UnitedStates,
+      },
+      { // Stock (in US)  0.0035  Sell
         value: 100_00,
         security: {
           name: "",
@@ -268,9 +277,9 @@ Deno.test({
     assertEquals(
       taxFormData["035"],
       <FormRow> {
-        quantity: 3,
-        taxBase: 300_00,
-        taxValue: 0.0035 * 300_00,
+        quantity: 4,
+        taxBase: 400_00,
+        taxValue: 0.0035 * 400_00,
       },
     );
     assertEquals(

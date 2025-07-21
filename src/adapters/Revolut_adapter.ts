@@ -70,7 +70,7 @@ export const RevolutAdapter: BrokerAdapter = async (data) => {
           date: new Date(dateAcquired),
           isin,
           currency,
-          value: moneyToNumber(costBasis),
+          value: moneyToNumber(costBasis) * -1,
         });
         brokerTransactions.push({
           date: new Date(dateSold),

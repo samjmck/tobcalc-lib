@@ -215,7 +215,7 @@ export function getTaxFormData(
       throw new InformativeError("tax_rate.not_found", taxRate);
     }
     formRow.quantity += 1;
-    formRow.taxBase += taxableTransaction.value;
+    formRow.taxBase += taxableTransaction.value < 0 ? taxableTransaction.value * -1 : taxableTransaction.value;
   }
 
   const formRowTaxRates = <[number, FormRow][]> [

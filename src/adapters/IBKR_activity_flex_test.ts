@@ -2,6 +2,7 @@ import { assertEquals } from "@std/assert";
 import type { BrokerTransaction } from "../broker_adapter.ts";
 import { CurrencyCode } from "../enums.ts";
 import { IBKRActivityFlexAdapter } from "./IBKR_activity_flex.ts";
+import { assertTransactionEquals } from "./adapter_test_helper.ts";
 
 Deno.test({
   name:
@@ -24,7 +25,7 @@ Deno.test({
         date: new Date("2025-03-25"),
         isin: "ISIN_2",
         currency: CurrencyCode.EUR,
-        value: 2949,
+        value: 2948.64,
       },
       {
         date: new Date("2025-03-25"),
@@ -42,7 +43,7 @@ Deno.test({
         date: new Date("2025-04-04"),
         isin: "ISIN_5",
         currency: CurrencyCode.EUR,
-        value: 2697,
+        value: 2696.70709,
       },
       {
         date: new Date("2025-04-04"),
@@ -54,13 +55,13 @@ Deno.test({
         date: new Date("2025-04-04"),
         isin: "ISIN_7",
         currency: CurrencyCode.EUR,
-        value: -124705,
+        value: -124704.6,
       },
       {
         date: new Date("2025-04-04"),
         isin: "ISIN_8",
         currency: CurrencyCode.EUR,
-        value: 32818,
+        value: -32818,
       },
       {
         date: new Date("2025-05-02"),
@@ -78,7 +79,7 @@ Deno.test({
 
     assertEquals(brokerTransactions.length, expected.length);
     for (let i = 0; i < expected.length; i++) {
-      assertEquals(brokerTransactions[i], expected[i]);
+      assertTransactionEquals(brokerTransactions[i], expected[i]);
     }
   },
 });

@@ -1,0 +1,28 @@
+<FlexQueryResponse queryName="test" type="AF">
+    <FlexStatements count="1">
+        <FlexStatement accountId="ACCOUNT_ID" fromDate="20250101" toDate="20250627" period="YearToDate"
+                       whenGenerated="20250629;044329">
+            <Trades>
+                <Trade accountId="ACCOUNT_ID" acctAlias="" model="" currency="EUR" fxRateToBase="1" assetCategory="STK"
+                       subCategory="ETF" symbol="SYMBOL_1" description="ETF_NAME" conid="CONID_1" securityID="SECID_1"
+                       securityIDType="ISIN" cusip="" isin="ISIN_1" figi="FIGI_1" listingExchange="EXCHANGE_1"
+                       underlyingConid="" underlyingSymbol="UNDERLYING_1" underlyingSecurityID=""
+                       underlyingListingExchange="" issuer="" issuerCountryCode="COUNTRY_1" tradeID="TRADE_ID_1"
+                       multiplier="1" relatedTradeID="" strike="" reportDate="20250203" expiry=""
+                       dateTime="20250203;112930" putCall="" tradeDate="20250203" principalAdjustFactor=""
+                       settleDateTarget="20250205" transactionType="ExchTrade" exchange="EXCHANGE_2" quantity="36"
+                       tradePrice="39.1363" tradeMoney="1408.91" proceeds="-1408.91" taxes="0" ibCommission="-3"
+                       ibCommissionCurrency="EUR" netCash="-1411.91" closePrice="39.161" openCloseIndicator="O" notes=""
+                       cost="1411.91" fifoPnlRealized="0" mtmPnl="0.886" origTradePrice="0" origTradeDate=""
+                       origTradeID="" origOrderID="0" origTransactionID="0" buySell="BUY" clearingFirmID=""
+                       ibOrderID="ORDER_ID_1" transactionID="TRANSACTION_ID_1" ibExecID="EXEC_ID_1"
+                       relatedTransactionID="" rtn="" brokerageOrderID="BROKERAGE_ID_1" orderReference=""
+                       volatilityOrderLink="" exchOrderId="N/A" extExecID="EXT_EXEC_ID_1" orderTime="20250203;112929"
+                       openDateTime="" holdingPeriodDateTime="" whenRealized="" whenReopened=""
+                       levelOfDetail="EXECUTION" changeInPrice="0" changeInQuantity="0" orderType="MKT" traderID=""
+                       isAPIOrder="N" accruedInt="0" initialInvestment="" serialNumber="" deliveryType=""
+                       commodityType="" fineness="0.0" weight="0.0"/>
+            </Trades>
+        </FlexStatement>
+    </FlexStatements>
+</FlexQueryResponse>

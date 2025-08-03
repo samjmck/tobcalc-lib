@@ -1,7 +1,7 @@
 import { assertEquals } from "@std/assert";
 import type { BrokerTransaction } from "../broker_adapter.ts";
 import { CurrencyCode } from "../enums.ts";
-import { IBKRActivityFlexAdapter } from "./IBKR_activity_flex.ts";
+import { IBKRActivityFlexAdapter } from "./IBKR_activity_flex_adapter.ts";
 import { assertTransactionEquals } from "./adapter_test_helper.ts";
 
 Deno.test({
@@ -10,7 +10,7 @@ Deno.test({
   permissions: { read: true },
   fn: async () => {
     const data = await Deno.readFile(
-      "src/adapters/IBKR_activity_flex_test.xml",
+      "src/adapters/IBKR_activity_flex_adapter_test.xml",
     );
     const brokerTransactions = await IBKRActivityFlexAdapter(new Blob([data]));
 

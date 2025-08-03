@@ -8,11 +8,10 @@
  */
 export function moneyToNumber(
   money: string,
-  decimalSeparator = ".",
+  decimalSeparator: string = ".",
   decimalCount: number | null = 2,
 ) {
   const decimalSeparatorIndex = money.indexOf(decimalSeparator);
-
   let decimalsFound: number;
   if (decimalSeparatorIndex === -1) {
     decimalsFound = 0;
@@ -31,5 +30,5 @@ export function moneyToNumber(
   }
 
   return Number(money.replace(decimalSeparator, "")) *
-    (10 ** exponent);
+      (10 ** exponent);
 }

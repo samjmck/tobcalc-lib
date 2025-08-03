@@ -1,7 +1,7 @@
 import { assertEquals } from "@std/assert";
-import type { BrokerTransaction } from "../broker_adapter.ts";
 import { CurrencyCode } from "../enums.ts";
 import { RevolutAdapter } from "./Revolut_adapter.ts";
+import { assertTransactionEquals } from "./adapter_test_helper.ts";
 
 Deno.test({
   name: "Revolut adapter converting csv to taxable transactions",
@@ -12,18 +12,18 @@ Deno.test({
     const data = await Deno.readFile("src/adapters/Revolut_adapter_test.csv");
     const brokerTransactions = await RevolutAdapter(new Blob([data]));
 
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[0],
-      <BrokerTransaction> {
+      {
         date: new Date("2025-03-14"),
         isin: "US92826C8394",
         currency: CurrencyCode.USD,
         value: -2244_39,
       },
     );
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[1],
-      <BrokerTransaction> {
+      {
         date: new Date("2025-03-28"),
         isin: "US92826C8394",
         currency: CurrencyCode.USD,
@@ -31,18 +31,18 @@ Deno.test({
       },
     );
 
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[2],
-      <BrokerTransaction> {
+      {
         date: new Date("2025-04-08"),
         isin: "US02079K3059",
         currency: CurrencyCode.USD,
         value: -5376_56,
       },
     );
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[3],
-      <BrokerTransaction> {
+      {
         date: new Date("2025-04-28"),
         isin: "US02079K3059",
         currency: CurrencyCode.USD,
@@ -50,18 +50,18 @@ Deno.test({
       },
     );
 
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[4],
-      <BrokerTransaction> {
+      {
         date: new Date("2025-04-09"),
         isin: "NL0010273215",
         currency: CurrencyCode.EUR,
         value: -4852_15,
       },
     );
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[5],
-      <BrokerTransaction> {
+      {
         date: new Date("2025-06-25"),
         isin: "NL0010273215",
         currency: CurrencyCode.EUR,
@@ -69,18 +69,18 @@ Deno.test({
       },
     );
 
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[6],
-      <BrokerTransaction> {
+      {
         date: new Date("2025-04-29"),
         isin: "FI4000297767",
         currency: CurrencyCode.EUR,
         value: -3593_98,
       },
     );
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[7],
-      <BrokerTransaction> {
+      {
         date: new Date("2025-06-26"),
         isin: "FI4000297767",
         currency: CurrencyCode.EUR,

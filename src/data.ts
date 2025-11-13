@@ -233,7 +233,9 @@ export async function getSecurity(isin: string): Promise<Security> {
         },
       );
       const html = await response.text();
-      const accumulating = /<td class="val">Accumulating<\/td>/g.test(html);
+      const accumulating = /<div class="val bold">Accumulating<\/div>/g.test(
+        html,
+      );
       return {
         type: SecurityType.ETF,
         name,

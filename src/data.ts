@@ -233,7 +233,7 @@ export async function getSecurity(isin: string): Promise<Security> {
         },
       );
       const html = await response.text();
-      const accumulating = /<div class="val bold">Accumulating<\/div>/g.test(
+      const accumulating = /<td class="val" data-testid="tl_etf-basics_value_distribution-policy">Accumulating<\/td>/g.test(
         html,
       );
       return {

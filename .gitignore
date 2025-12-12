@@ -3,5 +3,4 @@
 .vscode
 pdfs/build/*
 pdfs/TOB-*.pdf
-src/registered_funds.ts
 lib/

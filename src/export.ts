@@ -3,6 +3,7 @@ import { DEGIROAdapter } from "./adapters/DEGIRO_adapter.ts";
 import { RevolutAdapter } from "./adapters/Revolut_adapter.ts";
 import { Trading212Adapter } from "./adapters/Trading212_adapter.ts";
 import { BoursoramaAdapter } from "./adapters/Boursorama_adapter.ts";
+import { IBKRActivityFlexAdapter } from "./adapters/IBKR_activity_flex_adapter.ts";
 import type { BrokerAdapter, BrokerTransaction } from "./broker_adapter.ts";
 import { InformativeError } from "./InformativeError.ts";
 import {
@@ -45,7 +46,6 @@ export {
   CountryCode,
   CurrencyCode,
   DEGIROAdapter,
-  RevolutAdapter,
   eeaCountries,
   exchangeRatesMap,
   fillPdf,
@@ -57,9 +57,11 @@ export {
   getSecurity,
   getTaxableTransactions,
   getTaxFormData,
+  IBKRActivityFlexAdapter,
   IBKRAdapter,
   InformativeError,
   isNameRegistered,
+  RevolutAdapter,
   SecurityType,
   setECBUrlStart,
   setJustETFUrlStart,

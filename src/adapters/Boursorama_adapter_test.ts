@@ -1,7 +1,7 @@
 import { BoursoramaAdapter } from "./Boursorama_adapter.ts";
 import { assertEquals } from "@std/assert";
-import type { BrokerTransaction } from "../broker_adapter.ts";
 import { CurrencyCode } from "../enums.ts";
+import { assertTransactionEquals } from "./adapter_test_helper.ts";
 
 Deno.test({
   name: "Boursorama adapter converting csv to taxable transactions test 1",
@@ -14,18 +14,28 @@ Deno.test({
     );
     const brokerTransactions = await BoursoramaAdapter(new Blob([data]));
 
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[0],
-      <BrokerTransaction> {
+      {
         date: new Date(2023, 1, 6), // 2023-06-02
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
         value: -219_24,
       },
     );
-    assertEquals(
+
+    assertTransactionEquals(
+      brokerTransactions[0],
+      {
+        date: new Date(2023, 1, 6), // 2023-06-02
+        isin: "IE00B4L5Y983",
+        currency: CurrencyCode.EUR,
+        value: -219_24,
+      },
+    );
+    assertTransactionEquals(
       brokerTransactions[1],
-      <BrokerTransaction> {
+      {
         date: new Date(2023, 1, 2), // 2023-02-02
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
@@ -47,9 +57,9 @@ Deno.test({
     );
     const brokerTransactions = await BoursoramaAdapter(new Blob([data]));
 
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[0],
-      <BrokerTransaction> {
+      {
         date: new Date(2023, 2, 6), // 2023-03-06
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
@@ -71,18 +81,18 @@ Deno.test({
     );
     const brokerTransactions = await BoursoramaAdapter(new Blob([data]));
 
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[0],
-      <BrokerTransaction> {
+      {
         date: new Date(2023, 3, 3), // 2023-04-03
         isin: "LU1781541179",
         currency: CurrencyCode.EUR,
         value: -307_28,
       },
     );
-    assertEquals(
+    assertTransactionEquals(
       brokerTransactions[1],
-      <BrokerTransaction> {
+      {
         date: new Date(2023, 3, 3), // 2023-04-03
         isin: "IE00B4L5Y983",
         currency: CurrencyCode.EUR,
